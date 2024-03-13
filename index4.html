@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <ul>
+
+    </ul>
+
+    <script>
+        fetch('https://script.google.com/macros/s/AKfycbzirsJL2TjaXituMgUSdQJ0v9AHUgFa3uACeqCA1QMyzdYtOPXNMn2BTPu1Eft-sN1D/exec')
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(item => {
+                const mae = `<li>${item.title}</li>`;
+                document.querySelector('ul').insertAdjacentHTML('beforeend', mae);
+            });
+        });
+    </script>
+</body>
+</html>

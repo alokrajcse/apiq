@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple API Demo</title>
+    <style>
+        body {
+            background-color: aqua;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple API Demo</h1>
+    <table id="output">
+        <tr>
+            
+        </tr>
+    </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('https://script.google.com/macros/s/AKfycbzirsJL2TjaXituMgUSdQJ0v9AHUgFa3uACeqCA1QMyzdYtOPXNMn2BTPu1Eft-sN1D/exec') // Replace 'https://api.example.com/data' with your API endpoint
+                .then(res => res.json())
+                .then(data => {
+                    const tableBody = document.getElementById('output');
+
+                    data.forEach(item => {
+                        const row = tableBody.insertRow();
+                        const cell1 = row.insertCell(0);
+                        const cell2 = row.insertCell(1);
+
+                        cell1.textContent = item.title;
+                        cell2.textContent = item.title;
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching or displaying data:', error);
+                    const errorMessage = document.createElement('p');
+                    errorMessage.textContent = 'An error occurred while fetching or displaying data. Please try again later.';
+                    document.body.appendChild(errorMessage);
+                });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> API </title>
+    <style>
+        body {
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <h1> API Demo</h1>
+    <div id="output"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('https://script.google.com/macros/s/AKfycbzirsJL2TjaXituMgUSdQJ0v9AHUgFa3uACeqCA1QMyzdYtOPXNMn2BTPu1Eft-sN1D/exec') // Replace 'https://api.example.com/data' with your API endpoint
+                .then(res => res.json())
+                .then(data => {
+                    data.forEach(item => {
+                        const mark = `<h2>${item.title}</h2>`;
+                        const mark2 = `<p>${item.description}</p>`;
+
+                        document.getElementById('output').insertAdjacentHTML('beforeend', mark + mark2);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching or displaying data:', error);
+                    document.getElementById('output').innerHTML = '<p>An error occurred while fetching or displaying data. Please try again later.</p>';
+                });
+        });
+    </script>
+</body>
+</html>
